@@ -1,4 +1,66 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+  color: white;
+}
 h1 {
+  font-weight: 900px;
+}
+.container {
+  color: white;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 15px 60px;
+  border: solid;
+  border-radius: 15px;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(59, 149, 237) 0%,
+    rgb(7, 91, 173) 90%
+  );
+  border-color: white;
   text-align: center;
-  color: blue;
+  font-family: "Poppins", sans-serif;
+}
+form {
+  padding: 10px 0px;
+}
+.temperature {
+  text-decoration: none;
+  color: white;
+}
+.form-control {
+  border-color: #fdffcd;
+}
+.btn-primary {
+  color: rgb(7, 91, 173);
+  background-color: white;
+  border-color: #fdffcd;
+}
+.btn-primary:hover {
+  color: rgb(7, 91, 173);
+  background-color: #bbe4e9;
+  opacity: 90%;
+  border-color: rgb(59, 149, 237);
+}
+.fa-search-location {
+  font-size: 20px;
+  color: white;
+}
+.main-icon {
+  color: white;
+  font-size: 80px;
+}
+.icon-forecast {
+  color: white;
+  font-size: 40px;
+  line-height: 48px;
+}
+#selected-city {
+  text-transform: capitalize;
 }
