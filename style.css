@@ -18,11 +18,7 @@ h1 {
   padding: 15px 60px;
   border: solid;
   border-radius: 15px;
-  background: radial-gradient(
-    circle at 10% 20%,
-    rgb(59, 149, 237) 0%,
-    rgb(7, 91, 173) 90%
-  );
+  background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   border-color: white;
   text-align: center;
   font-family: "Poppins", sans-serif;
@@ -70,6 +66,5 @@ form {
 }
 #github-link {
   color: white;
-  font-weight: lighter;
   font-size: 14px;
 }
