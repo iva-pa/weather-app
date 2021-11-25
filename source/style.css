@@ -61,9 +61,9 @@ form {
 }
 
 .link {
+  font-size: 14px;
   margin-top: 20px;
 }
 #github-link {
   color: white;
-  font-size: 14px;
 }
