@@ -65,6 +65,6 @@ form {
   margin: 0 auto;
 }
 
-#forecast-description {
+#forecast-description::first-letter {
   text-transform: capitalize;
 }

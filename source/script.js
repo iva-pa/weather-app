@@ -1,23 +1,22 @@
-let now = new Date();
+function formatDate(timestamp) {
+let updateDate = new Date(timestamp); 
+let months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
-let months =[
-  "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+let month = months[updateDate.getMonth()];
+let date = updateDate.getDate();
+let year = updateDate.getFullYear();
+return `${month} ${date}, ${year}`
+}
 
+function formatTime(timestamp) {
+let updateDate = new Date(timestamp); 
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 
-let month = months[now.getMonth()];
-let date = now.getDate();
-let year = now.getFullYear();
-let day = days[now.getDay()];
-let hour = ("0" + now.getHours()).slice(-2);
-let minute = ('0'+now.getMinutes()).slice(-2);
-
-let currentDate = document.querySelector("#current-date")
-currentDate.innerHTML = `${month} ${date}, ${year}`
-
-let currentTime = document.querySelector("#current-time")
-currentTime.innerHTML = `${day} ${hour}:${minute}`
-
+let day = days[updateDate.getDay()];
+let hour = ("0" + updateDate.getHours()).slice(-2);
+let minute = ('0'+ updateDate.getMinutes()).slice(-2);
+return `${day} ${hour}:${minute}`
+}
 
 //change of city
 function showTemperature (response) {
@@ -26,6 +25,8 @@ let city = (response.data.name);
   let forecast = (response.data.weather[0].description);
   let humidity = (response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
+  let currentDate = document.querySelector("#current-date");
+  let currentTime = document.querySelector("#current-time");
   let cityElement = document.querySelector("#selected-city");
   cityElement.innerHTML = city;
   let temperatureElement = document.querySelector("#current-temperature");
@@ -36,6 +37,8 @@ let city = (response.data.name);
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = `Wind: ${wind} m/s`;
+  currentDate.innerHTML = formatDate(response.data.dt * 1000);
+currentTime.innerHTML = formatTime(response.data.dt * 1000);
   console.log(response);
 }
 
