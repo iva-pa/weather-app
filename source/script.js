@@ -18,28 +18,31 @@ let minute = ('0'+ updateDate.getMinutes()).slice(-2);
 return `${day} ${hour}:${minute}`
 }
 
-//change of city
+//weather forecast
 function showTemperature (response) {
   let temperature = Math.round(response.data.main.temp);
-let city = (response.data.name);
+  let city = (response.data.name);
   let forecast = (response.data.weather[0].description);
   let humidity = (response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let currentDate = document.querySelector("#current-date");
   let currentTime = document.querySelector("#current-time");
   let cityElement = document.querySelector("#selected-city");
+  let iconElement = document.querySelector("#main-icon");
+
   cityElement.innerHTML = city;
-  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = `${temperature} °C`;
-  let forecastElement = document.querySelector("#forecast-description");
+  forecastElement = document.querySelector("#forecast-description");
   forecastElement.innerHTML = forecast;
-  let humidityElement = document.querySelector("#humidity");
+  humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  let windElement = document.querySelector("#wind");
+  windElement = document.querySelector("#wind");
   windElement.innerHTML = `Wind: ${wind} m/s`;
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
-currentTime.innerHTML = formatTime(response.data.dt * 1000);
-  console.log(response);
+  currentTime.innerHTML = formatTime(response.data.dt * 1000);
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchDefault(city) {

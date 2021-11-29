@@ -47,8 +47,10 @@ form {
   font-size: 20px;
   color: white;
 }
-.main-icon {
-  width: 200px;
+#main-icon {
+  width: 90px;
+  position: relative;
+  top: 30px;
 }
 .icon-forecast {
   color: white;
