@@ -23,7 +23,7 @@ currentTime.innerHTML = `${day} ${hour}:${minute}`
 function showTemperature (response) {
   let temperature = Math.round(response.data.main.temp);
 let city = (response.data.name);
-  let forecast = (response.data.weather[0].main);
+  let forecast = (response.data.weather[0].description);
   let humidity = (response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let cityElement = document.querySelector("#selected-city");
