@@ -52,6 +52,18 @@ form {
   position: relative;
   top: 30px;
 }
+a {
+  text-decoration: none;
+}
+.weather-temperature .active {
+  color: white;
+  cursor: default;
+  text-decoration: none;
+}
+.weather-temperature .active:hover {
+  text-decoration: none;
+}
+
 .icon-forecast {
   color: white;
   font-size: 40px;
@@ -61,10 +73,13 @@ form {
   text-transform: capitalize;
 }
 
-.link {
+.git-link {
   font-size: 14px;
   max-width: 700px;
   margin: 0 auto;
+}
+#github-link {
+  text-decoration: underline;
 }
 .units {
   font-size: 20px;
