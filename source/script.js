@@ -20,28 +20,25 @@ return `${day} ${hour}:${minute}`
 
 //weather forecast
 function showTemperature (response) {
-  let temperature = Math.round(response.data.main.temp);
-  let city = (response.data.name);
-  let forecast = (response.data.weather[0].description);
-  let humidity = (response.data.main.humidity);
-  let wind = Math.round(response.data.wind.speed);
+  let temperatureElement = document.querySelector("#current-temperature");
+  let forecastElement = document.querySelector("#forecast-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
   let currentDate = document.querySelector("#current-date");
   let currentTime = document.querySelector("#current-time");
   let cityElement = document.querySelector("#selected-city");
   let iconElement = document.querySelector("#main-icon");
 
-  cityElement.innerHTML = city;
-  temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = `${temperature} °C`;
-  forecastElement = document.querySelector("#forecast-description");
-  forecastElement.innerHTML = forecast;
-  humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `Humidity: ${humidity}%`;
-  windElement = document.querySelector("#wind");
-  windElement.innerHTML = `Wind: ${wind} m/s`;
+  celsiusTemperature = response.data.main.temp;
+
+  cityElement.innerHTML = (response.data.name);
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  forecastElement.innerHTML = (response.data.weather[0].description);
+  humidityElement.innerHTML = `Humidity: ${(response.data.main.humidity)}%`;
+    windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
   currentTime.innerHTML = formatTime(response.data.dt * 1000);
-  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
@@ -79,6 +76,17 @@ document.getElementById("search-form").reset();
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getPosition);
 
+let celsiusTemperature = null;
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+
 searchDefault("Amsterdam");
-
-

@@ -66,6 +66,11 @@ form {
   max-width: 700px;
   margin: 0 auto;
 }
+.units {
+  font-size: 20px;
+  position: relative;
+  top: -14px;
+}
 
 #forecast-description::first-letter {
   text-transform: capitalize;
