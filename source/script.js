@@ -42,6 +42,7 @@ function showTemperature (response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
+//search for a city
 function searchDefault(city) {
 let apiKey = "bd2d78faf9d1acb5b346a3bce88defb1";
 let unit = "metric";
@@ -53,12 +54,12 @@ function handleSubmit (event) {
   event.preventDefault();
   let city = document.querySelector("#search-city-input").value;
 searchDefault(city);
-
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
+//search for current position of user
 function getPosition() {
 navigator.geolocation.getCurrentPosition(showPosition);
 }
@@ -76,6 +77,7 @@ document.getElementById("search-form").reset();
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getPosition);
 
+//display temperature in Celsius and Fahrenheit
 let celsiusTemperature = null;
 
 function displayFahrenheitTemperature(event) {
