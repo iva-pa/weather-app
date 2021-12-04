@@ -18,6 +18,30 @@ let minute = ('0'+ updateDate.getMinutes()).slice(-2);
 return `${day} ${hour}:${minute}`
 }
 
+// display forecast
+function displayForecast () {
+  let forecastElement = document.querySelector("#weather-forecast");
+
+let forecastHTML = `<div class="row">`;
+
+  let forecastDays = ["Sat", "Sun", "Mon", "Tue"];
+  forecastDays.forEach (function (day) {
+
+  forecastHTML = forecastHTML + ` 
+  <div class="col-2">
+    <h4 id="forecast-date">${day}</h4>
+    <div class = "forecast-temperature">
+    <span class="temperature-max">10°C</span> / <span class = "temperature-min">4°C</span>
+    </div>
+    <i class="fas fa-cloud-sun-rain icon-forecast"></i>
+  </div>
+`;
+});
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
 //weather forecast
 function showTemperature (response) {
   let temperatureElement = document.querySelector("#current-temperature");
@@ -40,6 +64,7 @@ function showTemperature (response) {
   currentTime.innerHTML = formatTime(response.data.dt * 1000);
   iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
 }
 
 //search for a city
@@ -93,7 +118,7 @@ function displayCelsiusTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
- celsiusLink.classList.add("active");
+  celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active"); 
 }
 
@@ -104,3 +129,4 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchDefault("Amsterdam");
+displayForecast();
