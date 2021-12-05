@@ -22,7 +22,7 @@ return `${day} ${hour}:${minute}`
 function formatDay(timestamp) {
 let date = new Date(timestamp * 1000);
 let day = date.getDay();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 return days[day];
 }
 
@@ -51,7 +51,7 @@ forecast.forEach (function (forecastHour, index) {
 forecastHTML = forecastHTML + `
 <div class="col-2">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
-    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="38"/>
+    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="46"/>
     <div class = "forecast-temperature">
     <span class="temperature-max">${Math.round(forecastHour.temp)}°C</span> 
     </div>
@@ -73,12 +73,17 @@ let forecastHTML = `<div class="row">`;
 forecast.forEach (function (forecastDay, index) {
   if(index<6){
 forecastHTML = forecastHTML + `
-<div class="col-2">
-    <h4 id="forecast-date">${formatDay(forecastDay.dt)}</h4>
-    <div class = "forecast-temperature">
+<div class="col-12">
+<div class="row">
+<div class="col-4">
+    <h4 id="forecast-date">${formatDay(forecastDay.dt)}</h4></div>
+    <div class = "col-4">
+    <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="64"/>
+    </div>
+    <div class = "forecast-temperature col-4">
     <span class="temperature-max">${Math.round(forecastDay.temp.max)}°C</span> / <span class = "temperature-min">${Math.round(forecastDay.temp.min)}°C</span>
     </div>
-    <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="38"/>
+    </div>
   </div>
 `;
 };

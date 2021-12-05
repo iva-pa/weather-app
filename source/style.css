@@ -59,6 +59,10 @@ a {
   text-align: left;
 }
 
+.forecast-temperature {
+  font-size: 20px;
+}
+
 .weather-temperature .active {
   color: white;
   cursor: default;
