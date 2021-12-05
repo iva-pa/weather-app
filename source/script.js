@@ -19,7 +19,8 @@ return `${day} ${hour}:${minute}`
 }
 
 // display forecast
-function displayForecast () {
+function displayForecast (response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather-forecast");
 
 let forecastHTML = `<div class="row">`;
@@ -43,6 +44,14 @@ forecastElement.innerHTML = forecastHTML;
 }
 
 //weather forecast
+function getForecast(coordinates) {
+console.log(coordinates);
+let apiKey = "bd2d78faf9d1acb5b346a3bce88defb1";
+let unit = "metric";
+let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
+axios.get(apiUrl).then(displayForecast);
+}
+
 function showTemperature (response) {
   let temperatureElement = document.querySelector("#current-temperature");
   let forecastElement = document.querySelector("#forecast-description");
@@ -65,13 +74,15 @@ function showTemperature (response) {
   iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
+  getForecast(response.data.coord);
+
 }
 
 //search for a city
 function searchDefault(city) {
 let apiKey = "bd2d78faf9d1acb5b346a3bce88defb1";
 let unit = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
 axios.get(apiUrl).then(showTemperature)
 }
 
@@ -129,4 +140,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchDefault("Amsterdam");
-displayForecast();
