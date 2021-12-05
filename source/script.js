@@ -51,10 +51,10 @@ forecast.forEach (function (forecastHour, index) {
 forecastHTML = forecastHTML + `
 <div class="col-2">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
+    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="38"/>
     <div class = "forecast-temperature">
     <span class="temperature-max">${Math.round(forecastHour.temp)}°C</span> 
     </div>
-    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="38"/>
   </div>
 `;
 };
