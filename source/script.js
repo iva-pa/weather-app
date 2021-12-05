@@ -18,7 +18,7 @@ let minute = ('0'+ updateDate.getMinutes()).slice(-2);
 return `${day} ${hour}:${minute}`
 }
 
-// display forecast
+// display daily forecast
 function formatDay(timestamp) {
 let date = new Date(timestamp * 1000);
 let day = date.getDay();
@@ -26,10 +26,47 @@ let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 return days[day];
 }
 
-function displayForecast (response) {
+// display hourly forecast
+function formatHour(timestamp) {
+  let time = new Date(timestamp * 1000);
+  let forecastHour = ("0" + time.getHours()).slice(-2);
+  return(forecastHour);
+}
+function formatMinutes(timestamp) {
+  let time = new Date(timestamp * 1000);
+  let forecastMinute = ("0" + time.getMinutes()).slice(-2);
+  return(forecastMinute);
+}
+
+function displayHourlyForecast (response) {
+  console.log(response.data);
+let forecast = response.data.hourly;
+
+let forecastElement = document.querySelector("#weather-hourly-forecast");
+
+let forecastHTML = `<div class="row">`;
+
+forecast.forEach (function (forecastHour, index) {
+  if(index<6){
+forecastHTML = forecastHTML + `
+<div class="col-2">
+    <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
+    <div class = "forecast-temperature">
+    <span class="temperature-max">${Math.round(forecastHour.temp)}°C</span> 
+    </div>
+    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="38"/>
+  </div>
+`;
+};
+});
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+};
+
+function displayDailyForecast (response) {
 let forecast = response.data.daily;
 
-let forecastElement = document.querySelector("#weather-forecast");
+let forecastElement = document.querySelector("#weather-daily-forecast");
 
 let forecastHTML = `<div class="row">`;
 
@@ -56,7 +93,8 @@ function getForecast(coordinates) {
 let apiKey = "bd2d78faf9d1acb5b346a3bce88defb1";
 let unit = "metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
-axios.get(apiUrl).then(displayForecast);
+axios.get(apiUrl).then(displayHourlyForecast);
+axios.get(apiUrl).then(displayDailyForecast);
 }
 
 function showTemperature (response) {

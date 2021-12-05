@@ -55,6 +55,10 @@ form {
 a {
   text-decoration: none;
 }
+.forecast-heading {
+  text-align: left;
+}
+
 .weather-temperature .active {
   color: white;
   cursor: default;
