@@ -53,7 +53,6 @@ forecastElement.innerHTML = forecastHTML;
 
 //weather forecast
 function getForecast(coordinates) {
-console.log(coordinates);
 let apiKey = "bd2d78faf9d1acb5b346a3bce88defb1";
 let unit = "metric";
 let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=${unit}`;
@@ -120,31 +119,5 @@ document.getElementById("search-form").reset();
 
 let locationButton = document.querySelector("#current-location");
 locationButton.addEventListener("click", getPosition);
-
-//display temperature in Celsius and Fahrenheit
-let celsiusTemperature = null;
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#current-temperature");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active"); 
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 searchDefault("Amsterdam");
