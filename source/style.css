@@ -48,9 +48,10 @@ form {
   color: white;
 }
 #main-icon {
-  width: 90px;
+  width: 64px;
   position: relative;
   top: 30px;
+  float: left;
 }
 a {
   text-decoration: none;
@@ -92,7 +93,7 @@ a {
 .units {
   font-size: 20px;
   position: relative;
-  top: -14px;
+  top: -10px;
 }
 
 #forecast-description::first-letter {

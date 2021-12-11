@@ -51,7 +51,7 @@ forecast.forEach (function (forecastHour, index) {
 forecastHTML = forecastHTML + `
 <div class="col-2">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
-    <img src="https://openweathermap.org/img/wn/${forecastHour.weather[0].icon}@2x.png" alt="" width="46"/>
+    <img src="images/${forecastHour.weather[0].icon}.png" alt="" width="46"/>
     <div class = "forecast-temperature">
     <span class="temperature-max">${Math.round(forecastHour.temp)}°C</span> 
     </div>
@@ -78,7 +78,7 @@ forecastHTML = forecastHTML + `
 <div class="col-4">
     <h4 id="forecast-date">${formatDay(forecastDay.dt)}</h4></div>
     <div class = "col-4">
-    <img src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="64"/>
+    <img src="images/${forecastDay.weather[0].icon}.png" alt="" width="46"/>
     </div>
     <div class = "forecast-temperature col-4">
     <span class="temperature-max">${Math.round(forecastDay.temp.max)}°C</span> / <span class = "temperature-min">${Math.round(forecastDay.temp.min)}°C</span>
@@ -121,7 +121,7 @@ function showTemperature (response) {
     windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} m/s`;
   currentDate.innerHTML = formatDate(response.data.dt * 1000);
   currentTime.innerHTML = formatTime(response.data.dt * 1000);
-  iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("src", `images/${response.data.weather[0].icon}.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
