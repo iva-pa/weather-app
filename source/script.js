@@ -49,7 +49,7 @@ let forecastHTML = `<div class="row">`;
 forecast.forEach (function (forecastHour, index) {
   if(index<6){
 forecastHTML = forecastHTML + `
-<div class="col-2">
+<div class="col-2 detail-forecast">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
     <img src="images/${forecastHour.weather[0].icon}.png" alt="" width="46"/>
     <div class = "forecast-temperature">
@@ -73,7 +73,7 @@ let forecastHTML = `<div class="row">`;
 forecast.forEach (function (forecastDay, index) {
   if(index<6){
 forecastHTML = forecastHTML + `
-<div class="col-12">
+<div class="col-12 detail-forecast">
 <div class="row">
 <div class="col-4">
     <h4 id="forecast-date">${formatDay(forecastDay.dt)}</h4></div>
@@ -111,6 +111,7 @@ function showTemperature (response) {
   let currentTime = document.querySelector("#current-time");
   let cityElement = document.querySelector("#selected-city");
   let iconElement = document.querySelector("#main-icon");
+let pictureElement = document.querySelector(".container");
 
   celsiusTemperature = response.data.main.temp;
 
@@ -124,8 +125,21 @@ function showTemperature (response) {
   iconElement.setAttribute("src", `images/${response.data.weather[0].icon}.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  getForecast(response.data.coord);
+  if (response.data.weather[0].icon === "01d"){
+pictureElement.style.backgroundImage = "url('source/sun.jpg')";
+  } else if (response.data.weather[0].icon === "01n") {
+    pictureElement.style.backgroundImage = "url('source/night.jpg')";
+  } else if (response.data.weather[0].icon === "02d" || response.data.weather[0].icon === "02n" || response.data.weather[0].icon === "03d" || response.data.weather[0].icon === "03n" || response.data.weather[0].icon === "04d" || response.data.weather[0].icon === "04n"){
+pictureElement.style.backgroundImage = "url('source/clouds.jpg')";
+  } else if (response.data.weather[0].icon === "09d" || response.data.weather[0].icon === "09n" || response.data.weather[0].icon === "10d" || response.data.weather[0].icon === "10n"){
+pictureElement.style.backgroundImage = "url('source/rain.jpg')";
+  } else if (response.data.weather[0].icon === "13d" || response.data.weather[0].icon === "13n"){
+pictureElement.style.backgroundImage = "url('source/snow.jpg')";
+  } else if (response.data.weather[0].icon === "50d" || response.data.weather[0].icon === "50n"){
+pictureElement.style.backgroundImage = "url('source/fog.jpg')";
+  }
 
+  getForecast(response.data.coord);
 }
 
 //search for a city

@@ -4,26 +4,31 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
-  color: white;
+  font-family: "Poppins", sans-serif;
+  color: black;
 }
 h1 {
   font-weight: 900px;
 }
 .container {
-  color: white;
+  color: black;
   max-width: 700px;
   margin: 30px auto 0 auto;
   padding: 15px 30px;
   border: solid;
   border-radius: 15px;
-  background: linear-gradient(to top, #30cfd0 0%, #330867 100%);
   border-color: white;
+  background-image: url("rain.jpg");
+  background-size: cover;
   text-align: center;
   font-family: "Poppins", sans-serif;
 }
+
 form {
   padding: 10px 0px;
+}
+.detail-forecast {
+  padding: 10px 20px;
 }
 .temperature {
   text-decoration: none;
@@ -48,9 +53,9 @@ form {
   color: white;
 }
 #main-icon {
-  width: 64px;
+  width: 78px;
   position: relative;
-  top: 30px;
+  top: 18px;
   float: left;
 }
 a {
@@ -83,19 +88,24 @@ a {
 }
 
 .git-link {
-  font-size: 14px;
+  font-size: 12px;
   max-width: 700px;
   margin: 0 auto;
+  font-family: "Poppins", sans-serif;
 }
 #github-link {
   text-decoration: underline;
 }
 .units {
-  font-size: 20px;
+  font-size: 24px;
   position: relative;
-  top: -10px;
+  top: -8px;
 }
 
 #forecast-description::first-letter {
   text-transform: capitalize;
+}
+#forecast-description {
+  font-weight: 600;
+  font-size: 18px;
 }
