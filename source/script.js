@@ -129,8 +129,11 @@ let pictureElement = document.querySelector(".container");
 pictureElement.style.backgroundImage = "url('source/sun.jpg')";
   } else if (response.data.weather[0].icon === "01n") {
     pictureElement.style.backgroundImage = "url('source/night.jpg')";
-  } else if (response.data.weather[0].icon === "02d" || response.data.weather[0].icon === "02n" || response.data.weather[0].icon === "03d" || response.data.weather[0].icon === "03n" || response.data.weather[0].icon === "04d" || response.data.weather[0].icon === "04n"){
+  } else if (response.data.weather[0].icon === "02d" || response.data.weather[0].icon === "03d" || response.data.weather[0].icon === "04d"){
 pictureElement.style.backgroundImage = "url('source/clouds.jpg')";
+  }
+else if (response.data.weather[0].icon === "02n" || response.data.weather[0].icon === "03n" || response.data.weather[0].icon === "04n"){
+pictureElement.style.backgroundImage = "url('source/clouds-night.jpg')";
   } else if (response.data.weather[0].icon === "09d" || response.data.weather[0].icon === "09n" || response.data.weather[0].icon === "10d" || response.data.weather[0].icon === "10n"){
 pictureElement.style.backgroundImage = "url('source/rain.jpg')";
   } else if (response.data.weather[0].icon === "13d" || response.data.weather[0].icon === "13n"){
