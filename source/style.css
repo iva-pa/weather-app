@@ -5,13 +5,13 @@ h4,
 h5,
 h6 {
   font-family: "Poppins", sans-serif;
-  color: black;
+  color: #020205;
 }
 h1 {
   font-weight: 900px;
 }
 .container {
-  color: black;
+  color: #020205;
   max-width: 700px;
   margin: 30px auto 0 auto;
   padding: 15px 30px;
@@ -35,18 +35,19 @@ form {
   color: white;
 }
 .form-control {
-  border-color: #fdffcd;
+  border-color: #5c5470;
 }
 .btn-primary {
-  color: rgb(7, 91, 173);
+  color: #352f44;
   background-color: white;
-  border-color: #fdffcd;
+  border-color: #5c5470;
 }
 .btn-primary:hover {
-  color: rgb(7, 91, 173);
-  background-color: #bbe4e9;
+  color: #352f44;
+  font-weight: 600;
+  background-color: #dbd8e3;
   opacity: 90%;
-  border-color: rgb(59, 149, 237);
+  border-color: #352f44;
 }
 .fa-search-location {
   font-size: 20px;
