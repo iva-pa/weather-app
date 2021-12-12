@@ -18,7 +18,7 @@ h1 {
   border: solid;
   border-radius: 15px;
   border-color: white;
-  background-image: url("../images/rain.jpg");
+  background-image: url("rain.jpg");
   background-size: cover;
   text-align: center;
   font-family: "Poppins", sans-serif;
