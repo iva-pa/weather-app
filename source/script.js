@@ -49,7 +49,7 @@ let forecastHTML = `<div class="row">`;
 forecast.forEach (function (forecastHour, index) {
   if(index<5){
 forecastHTML = forecastHTML + `
-<div class="col-2 detail-forecast">
+<div class="col detail-forecast">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
     <img src="images/${forecastHour.weather[0].icon}.png" alt="" width="46"/>
     <div class = "forecast-temperature">
