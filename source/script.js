@@ -47,7 +47,7 @@ let forecastElement = document.querySelector("#weather-hourly-forecast");
 let forecastHTML = `<div class="row">`;
 
 forecast.forEach (function (forecastHour, index) {
-  if(index<6){
+  if(index<5){
 forecastHTML = forecastHTML + `
 <div class="col-2 detail-forecast">
     <h5 id="forecast-hour">${formatHour(forecastHour.dt)}:${formatMinutes(forecastHour.dt)}</h5>
@@ -71,7 +71,7 @@ let forecastElement = document.querySelector("#weather-daily-forecast");
 let forecastHTML = `<div class="row">`;
 
 forecast.forEach (function (forecastDay, index) {
-  if(index<6){
+  if(index<5){
 forecastHTML = forecastHTML + `
 <div class="col-12 detail-forecast">
 <div class="row">
