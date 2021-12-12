@@ -12,7 +12,7 @@ h1 {
 }
 .container {
   color: #020205;
-  max-width: 700px;
+  max-width: 640px;
   margin: 30px auto 0 auto;
   padding: 15px 30px;
   border: solid;
@@ -57,7 +57,6 @@ form {
   width: 78px;
   position: relative;
   top: 18px;
-  float: left;
 }
 a {
   text-decoration: none;
